@@ -1,0 +1,22 @@
+{
+  "name": "backend-krowdy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "aws-sdk": "^2.568.0",
+    "body-parser": "^1.19.0",
+    "clockwork": "^0.1.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.3",
+    "winston": "^3.0.0"
+  }
+}
