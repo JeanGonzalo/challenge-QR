@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 
 const config = require('./config');
 const emailRoutes = require('./resources/emails/emails.routes');
-const attendeeRoutes = require('./resources/users/attendees.routes');
+const attendeeRoutes = require('./resources/attendees/attendees.routes');
 
 const app = express();
 app.use(bodyParser.json());
 
 // Conexiòn a Mongo Atlas
-mongoose.connect('mongodb+srv://krowdy123:krowdy123@challenge-qr-kspon.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://krowdy123:krowdy123@challenge-qr-kspon.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 mongoose.connection.on('error', (error) => {
   console.log('==========================')
   logger.error(error);
