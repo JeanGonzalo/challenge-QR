@@ -2,14 +2,18 @@ const express = require('express');
 const AWS = require('aws-sdk');
 
 const config = require('../../config')
-
 const atendeesController = require('./attendees.controller');
-const validateAttendee = require('./attendees.validate');// TODO: Verificar si se necesita
-
 const attendeesRoutes = express.Router();
 
+// GET
+// Get all attendees in DB.
+attendeesRoutes.get('/', async (req, res) => {
+  let attendees = await atendeesController.getAttendees();
+  res.json(attendees);
+});
 
-//CREATE
+// CREATE
+// Create a new attendee in DB.
 attendeesRoutes.post('/', async (req, res) => {
   const newAttendee = req.body;
   await atendeesController.create(newAttendee);
@@ -19,30 +23,17 @@ attendeesRoutes.post('/', async (req, res) => {
 
 });
 
-attendeesRoutes.get('/users', async (req, res) => {
-  let attendees = await atendeesController.getAttendees();
-  res.json(attendees);
-})
-
+// UPDATE
+// Update the assistance property. (set true)
 attendeesRoutes.put('/:dni', async (req, res) => {
   let dni = req.params.dni;
-
   let result = await atendeesController.update(dni, { assistance: true });
 
-  if (!result) {
-    console.log('El usuario no está registrado.');
-    res.json("El usuario no está registrado.");
-  }
-  else {
-    console.log('actualizado correctamente');
-    res.json(result);
-  }
+  if (!result) return res.json("El usuario no está registrado.");
 
+  console.log('actualizado correctamente');
+  res.json(result);
 
-
-})
-
-
-
+});
 
 module.exports = attendeesRoutes;
