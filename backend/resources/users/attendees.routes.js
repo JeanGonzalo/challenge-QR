@@ -25,16 +25,19 @@ attendeesRoutes.get('/users', async (req, res) => {
 })
 
 attendeesRoutes.put('/:dni', async (req, res) => {
-  let dniAttendes = req.param.dni;
-  let userSearch = await atendeesController.getByDni(dniAttendes);
+  let dni = req.params.dni;
 
-  if (userSearch === null) {
-    console.log('User no exist')
+  let result = await atendeesController.update(dni, { assistance: true });
+
+  if (!result) {
+    console.log('El usuario no está registrado.');
+    res.json("El usuario no está registrado.");
+  }
+  else {
+    console.log('actualizado correctamente');
+    res.json(result);
   }
 
-  let result = await atendeesController.update(dniAttendes, { assistance: true });
-  console.log('actualizado correctamente');
-  res.json(result);
 
 
 })
