@@ -1,0 +1,13 @@
+paginas que me ayudaron ->
+metodo post
+https://www.youtube.com/watch?v=GX4cCrcM-QA&t=172s
+https://www.youtube.com/watch?v=fUip-G5knGs
+
+
+codigos que me ayudarn ->
+https://www.djamware.com/post/5d67945100edd42e67632f9c/react-hooks-tutorial-how-to-use-hooks-in-reactjs-app#react-hooks-axios-fetch
+
+
+
+generador de qr ->
+https://codepen.io/hirokbanik/pen/wvwJOjM

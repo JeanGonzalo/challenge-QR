@@ -43,13 +43,14 @@ const Home = () => {
         email: '',
         cellphone: '',
         dni: '',
-        university: ''
+        university: '',
+        assistance: false
     });
 
 
     const submit = (e) => {
         e.preventDefault();
-        const user = { name: data.name, lastname: data.lastname, email: data.email, cellphone: data.cellphone, dni: data.dni, university: data.university };
+        const user = { name: data.name, lastname: data.lastname, email: data.email, cellphone: data.cellphone, dni: data.dni, university: data.university, assistance: false };
         Axios.post('/attendees/', user)
             .then(res => {
                 console.log(res.data)
