@@ -8,7 +8,7 @@ function getAttendees() {
     return Attendee.find({});
 }
 
-function get(id) {
+function getByDni(id) {
     return Attendee.findById(id);
 }
 
@@ -16,9 +16,10 @@ function getUAttendeeByUsername(username) {
     return Attendee.findOne(username)
 }
 
-function update(id, user) {
-    return Attendee.findOneAndUpdate({ _id: id }, { ...user }, { new: true });
+function update(dni, user) {
+    return Attendee.findOneAndUpdate({ dni: dni }, { ...user }, { new: true });
 }
+
 
 function remove(id) {
     return Attendee.findOneAndDelete(id);
@@ -27,7 +28,7 @@ function remove(id) {
 module.exports = {
     create,
     getAttendees,
-    get,
+    getByDni,
     getUAttendeeByUsername,
     update,
     remove,

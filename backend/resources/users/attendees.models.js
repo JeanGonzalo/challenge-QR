@@ -29,6 +29,11 @@ const attendeeSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Attendee debe tener un university']
     },
+    assistance: {
+        type: Boolean,
+        required: [true, 'go']
+    }
+
 });
 
 module.exports = mongoose.model('attendee', attendeeSchema);

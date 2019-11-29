@@ -8,6 +8,7 @@ const AttendeeSchema = Joi.object({
     cellphone: Joi.string().required(),
     dni: Joi.string().required(),
     university: Joi.string().required(),
+    assistance: Joi.boolean()
 });
 
 const validateAttendee = (req, res, next) => {
