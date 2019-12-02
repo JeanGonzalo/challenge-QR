@@ -31,7 +31,8 @@ const attendeeSchema = new mongoose.Schema({
     },
     assistance: {
         type: Boolean,
-        required: [true, 'go']
+        required: [false, 'go'],
+        default: false
     }
 
 });

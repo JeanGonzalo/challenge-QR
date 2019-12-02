@@ -3,9 +3,10 @@ const express = require('express');
 const AWS = require('aws-sdk');
 const emailsRoutes = express.Router();
 
+AWS.config.update({region:'us-east-1'});
+
 // SEND QR EMAIL
-emailsRoutes.post('/send', async (req, res) => {
-    // Set the region 
+const sendEmail = async (email) => {
     // Amazon SES configuration
     const SESConfig = {
         apiVersion: '2010-12-01',
@@ -18,9 +19,7 @@ emailsRoutes.post('/send', async (req, res) => {
     var params = {
         Source: 'soporte@lisis.app',
         Destination: {
-            ToAddresses: [
-                'krowdy.alertas@gmail.com'
-            ]
+            ToAddresses: [email]
         },
         ReplyToAddresses: [
             'krowdy.alertas@gmail.com',
@@ -52,9 +51,7 @@ emailsRoutes.post('/send', async (req, res) => {
         })
         .catch((err) => {
             console.error(err, err.stack);
-        });
+        }); 
+};
 
-    res.json('Se envió el correo satisfactoriamente.');
-});
-
-module.exports = emailsRoutes;
+module.exports = sendEmail;

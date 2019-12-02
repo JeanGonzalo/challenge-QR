@@ -1,7 +1,9 @@
 const express = require('express');
 const AWS = require('aws-sdk');
 
-const config = require('../../config')
+const config = require('../../config');
+const sendEmail = require('../lib/email');
+const logger = require('../lib/logger');
 const atendeesController = require('./attendees.controller');
 const attendeesRoutes = express.Router();
 
@@ -10,6 +12,7 @@ const attendeesRoutes = express.Router();
 attendeesRoutes.get('/', async (req, res) => {
   let attendees = await atendeesController.getAttendees();
   res.json(attendees);
+  logger.info('Se han obtenido todos los asistentes.');
 });
 
 // CREATE
@@ -17,9 +20,10 @@ attendeesRoutes.get('/', async (req, res) => {
 attendeesRoutes.post('/', async (req, res) => {
   const newAttendee = req.body;
   await atendeesController.create(newAttendee);
+  sendEmail(newAttendee.email); // Enviar email de confirmación
 
   res.json(newAttendee);
-  logger.info('Se ha creado correctamente el usuario: ', newAttendee);
+  logger.info('Se ha creado correctamente al asistente: ', newAttendee);
 
 });
 
@@ -31,8 +35,8 @@ attendeesRoutes.put('/:dni', async (req, res) => {
 
   if (!result) return res.json("El usuario no está registrado.");
 
-  console.log('actualizado correctamente');
   res.json(result);
+  logger.info('Se ha actualizado correctamente al asistente: ', result);
 
 });
 
