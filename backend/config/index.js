@@ -6,7 +6,7 @@ const baseConfig = {
 
 const developConfig = {
   SECRET_KEY: 'SECRET_KEY',
-  EXPIRES_IN: '24h', 
+  EXPIRES_IN: '24h',
 }
 
 const productionConfig = {
