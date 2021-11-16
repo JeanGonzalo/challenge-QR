@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^16.1.7",
-    "aws-sdk": "^2.568.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.19.0",
     "clockwork": "^0.1.4",
     "express": "^4.17.1",
